@@ -24,14 +24,14 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <header className={css['Searchbar']}>
-        <form className={css['SearchForm']} onSubmit={this.handleSubmit}>
-          <button type="submit" className={css['SearchForm-button']}>
-            <span className={css['SearchForm-button-label']}>Search</span>
+      <header className={css.searchbar}>
+        <form className={css.searchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={css.searchFormButton}>
+            <span className={css.searchFormButtonLabel}>Search</span>
           </button>
 
           <input
-            className={css['SearchForm-input']}
+            className={css.searchFormInput}
             type="text"
             autoComplete="off"
             autoFocus

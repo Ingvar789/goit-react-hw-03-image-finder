@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 const ImageGalleryItem = ({ id, webformatURL, tags, onShowModal }) => {
   return (
-    <li key={id} className={css['ImageGalleryItem']} onClick={onShowModal}>
+    <li key={id} className={css.imageGalleryItem} onClick={onShowModal}>
       <img
         src={webformatURL}
         alt={tags}
-        className={css['ImageGalleryItem-image']}
+        className={css.imageGalleryItemImage}
       />
     </li>
   );

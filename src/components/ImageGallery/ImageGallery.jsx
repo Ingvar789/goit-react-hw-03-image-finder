@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'components/Modal/Modal';
-import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 
 import css from './ImageGallery.module.css';
 
@@ -9,6 +9,7 @@ export default class ImageGallery extends Component {
   state = {
     isModalVisible: false,
   };
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -25,9 +26,13 @@ export default class ImageGallery extends Component {
   imageToModal = '';
   tagToModal = '';
 
-  showModal = index => {
-    this.imageToModal = this.props.pictures[index].largeImageURL;
-    this.tagToModal = this.props.pictures[index].tags;
+  showModal = id => {
+    for (let picture of this.props.pictures) {
+      if (picture.id === id) {
+        this.imageToModal = picture.largeImageURL;
+        this.tagToModal = picture.tags;
+      }
+    }
 
     this.setState({ isModalVisible: true });
   };
@@ -43,13 +48,13 @@ export default class ImageGallery extends Component {
     const { isModalVisible } = this.state;
     return (
       <>
-        <ul className={css['ImageGallery']}>
-          {pictures.map(({ id, webformatURL, tags }, index) => (
+        <ul className={css.imageGallery}>
+          {pictures.map(({ id, webformatURL, tags }) => (
             <ImageGalleryItem
               key={id}
               webformatURL={webformatURL}
               tag={tags}
-              onShowModal={() => this.showModal(index)}
+              onShowModal={() => this.showModal(id)}
             />
           ))}
         </ul>
